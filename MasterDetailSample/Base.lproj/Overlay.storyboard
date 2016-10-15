@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="16A323" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Overlay View Controller-->
+        <scene sceneID="Qcs-5X-Xt7">
+            <objects>
+                <viewController id="ZPB-7w-Skf" customClass="OverlayViewController" customModule="MasterDetailSample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="l8w-rR-PYC"/>
+                        <viewControllerLayoutGuide type="bottom" id="kb6-kh-yqy"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="lBV-pN-yNN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rHz-BS-jyH">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="lia-2s-aVN">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aiK-ey-ghS">
+                                <rect key="frame" x="221" y="7" width="83" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Dismiss"/>
+                                <connections>
+                                    <action selector="OnDismissButtonPressed:" destination="ZPB-7w-Skf" eventType="touchUpInside" id="Qs2-NA-O5U"/>
+                                </connections>
+                            </button>
+                            <connections>
+                                <action selector="DismissButtonPressed:" destination="ZPB-7w-Skf" id="TcT-yz-Gsf"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CBg-hz-joH" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3716" y="232.53373313343329"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="hUg-gh-quf">
+            <objects>
+                <navigationController storyboardIdentifier="Overlay" automaticallyAdjustsScrollViewInsets="NO" id="JsA-Jf-ruK" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="dmx-Ur-iQR">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZPB-7w-Skf" kind="relationship" relationship="rootViewController" id="AlP-an-CA3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wsu-Dn-fnW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2776.8000000000002" y="232.53373313343329"/>
+        </scene>
+    </scenes>
+</document>
