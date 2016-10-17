@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
-        showOverlay()
+        showOverlayFullScreen()
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
@@ -76,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return screengrab!
     }
 
-    internal func showOverlay() {
+    internal func showOverlayAsDialog() {
     
         // grab a screenshot
         let screenshot = grabScreenshot()
@@ -89,8 +89,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // grab the overlay controller
         let storyboard = UIStoryboard(name: "Overlay", bundle: nil)
         let overlay = storyboard.instantiateViewController(withIdentifier: "Overlay") as! UINavigationController
-        //overlay.modalPresentationStyle = UIModalPresentationStyle.formSheet
-        overlay.modalPresentationStyle = UIModalPresentationStyle.fullScreen
+        overlay.modalPresentationStyle = UIModalPresentationStyle.formSheet
         
         // swap the split view
         self.splitView = self.window!.rootViewController as? UISplitViewController;
@@ -99,11 +98,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // present the overlay
         underlay.present(overlay, animated: false, completion: nil)
     }
+
+    internal func showOverlayFullScreen() {
+        
+        // grab the overlay controller
+        let storyboard = UIStoryboard(name: "Overlay", bundle: nil)
+        let overlay = storyboard.instantiateViewController(withIdentifier: "Overlay") as! UINavigationController
+        
+        // swap the split view
+        self.splitView = self.window!.rootViewController as? UISplitViewController;
+        self.window!.rootViewController = overlay;
+    }
     
     internal func dismissOverlay() {
         
         // dismiss the overlay
-        self.window!.rootViewController?.dismiss(animated: true, completion: { 
+        var controller:UIViewController?
+        if  (self.window!.rootViewController as? UINavigationController) != nil{
+            self.window!.rootViewController = self.splitView
+            return
+        }else{
+            controller = self.window!.rootViewController
+        }
+        
+        controller!.dismiss(animated: true, completion: {
             self.window!.rootViewController = self.splitView
         })
     }

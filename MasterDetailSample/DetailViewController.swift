@@ -24,7 +24,7 @@ class DetailViewController: UIViewController {
     
     @IBAction func DonePressed(_ sender: AnyObject) {
         
-        (UIApplication.shared.delegate as! AppDelegate).showOverlay()
+        (UIApplication.shared.delegate as! AppDelegate).showOverlayAsDialog()
     }
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var descriptionLabel: UILabel!
